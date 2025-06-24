@@ -1,31 +1,30 @@
-# ♟️ Pygame Chess
+# Python Chess Game with Pygame GUI and AI
 
-A GUI-based chess game built with Python and Pygame, featuring full rules support including legal move validation, pawn promotion, and undo functionality. This version does not include an AI engine yet — it's designed for local human vs. human play on a beautiful custom board.
-
----
-
-## 🚀 Features
-
-- ✅ Fully interactive chessboard (click to move)
-- ✅ Legal move validation
-- ✅ Undo last move (← key)
-- ✅ Pawn promotion GUI (choose between Queen, Rook, Bishop, Knight)
-- ✅ Highlight selected square and valid moves
-- ✅ Clean board and piece rendering using Pygame
-- 🧠 Engine placeholder ready for future AI integration
+A fully functional chess game implemented in Python using Pygame for the graphical user interface. It supports Player vs Player (PvP), Player vs AI (PvE), and AI vs AI (EvE) modes with a basic chess engine featuring move validation, check/checkmate detection, and a minimax/negamax AI with alpha-beta pruning.
 
 ---
 
-## 📦 How to Run
+## Features
 
-### 🔧 Requirements
+- **Graphical Chessboard UI:** Clean and interactive chessboard rendered using Pygame.
+- **Multiple Game Modes:** Play human vs human, human vs AI, or AI vs AI.
+- **Legal Move Validation:** Ensures all moves follow chess rules.
+- **Check and Checkmate Detection:** Detects end game scenarios accurately.
+- **Pawn Promotion Handling:** User selects promotion piece via GUI.
+- **Undo and Reset:** Undo moves or reset the game anytime via keyboard.
+- **AI Opponent:** Implements minimax/negamax search with alpha-beta pruning and positional evaluation.
+- **Smooth Move Animations:** Pieces animate moving across the board for better UX.
+
+---
+
+## Getting Started
+
+### Prerequisites
 
 - Python 3.7+
-- `pygame` library
+- Pygame library
 
-### 💻 Running from Source
+Install Pygame via pip if not already installed:
 
-1. **Clone the repo** or download the source:
-   ```bash
-   git clone https://github.com/spampots/ChessApp.git
-   cd chess-app
+```bash
+pip install pygame
