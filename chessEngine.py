@@ -39,7 +39,7 @@ class GameState():
         self.blackKingLocation = (0, 4)
         
         # Flags for checkmate and stalemate.
-        self.checkMate = False
+        self.checkMate = True
         self.staleMate = False
         
         # Track square available for en passant capture.
@@ -98,6 +98,8 @@ class GameState():
         elif move.pieceMoved == "bK":
             self.blackKingLocation = (move.endRow, move.endCol)
 
+        # Store current en passant state for later restoration.
+        move.enpassantPossibleBefore = self.enpassantPossible
         # Update the en passant square if a pawn advances two squares.
         if move.pieceMoved[1] == 'p' and abs(move.startRow - move.endRow) == 2:
             self.enpassantPossible = ((move.startRow + move.endRow) // 2, move.endCol)
@@ -150,9 +152,8 @@ class GameState():
                     self.board[move.endRow][move.endCol-2] = self.board[move.endRow][move.endCol+1]
                     self.board[move.endRow][move.endCol+1] = "--"
 
-            # Clear en passant possibility if it was set by a two-square pawn advance.
-            if move.pieceMoved[1] == 'p' and abs(move.startRow - move.endRow) == 2:
-                self.enpassantPossible = ()
+            # Restore the previous en passant state.
+            self.enpassantPossible = move.enpassantPossibleBefore
 
             # Switch turn back.
             self.whiteToMove = not self.whiteToMove
@@ -173,6 +174,10 @@ class GameState():
                 castleRights.wqs, 
                 castleRights.bqs
             )
+
+            # When we undo move we cannot be in checkmate / stalemate
+            self.checkMate = False
+            self.staleMate = False
 
     def updateCastleRights(self, move):
         """
