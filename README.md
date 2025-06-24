@@ -27,5 +27,5 @@ A GUI-based chess game built with Python and Pygame, featuring full rules suppor
 
 1. **Clone the repo** or download the source:
    ```bash
-   git clone https://github.com/your-username/chess-app.git
+   git clone https://github.com/spampots/ChessApp.git
    cd chess-app
